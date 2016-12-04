@@ -1,7 +1,10 @@
 FROM python:latest
 
-RUN mkdir -p /usr/src/app/base
-WORKDIR /usr/src/app/base
-COPY . /usr/src/app/base
+RUN mkdir -p /tmp
+WORKDIR /tmp
+COPY . /tmp
 
-RUN pip install --no-cache-dir ./imgbase
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir .
+
+RUN rm -r *
